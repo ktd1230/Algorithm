@@ -34,19 +34,22 @@ public class 기능개발 {
 		ArrayList<Integer> list = new ArrayList<>();
 		while(!progressList.isEmpty()) {
 			int num = 0;
-			System.out.println(progressList);
+			boolean check = false;
 			for (Progress progress : progressList) {
 				progress.p += progress.s;
 			}
 			for (int i = 0; i < progressList.size(); i++) {
 				if(progressList.get(i).p >= 100) {
 					progressList.remove(i);
+					i--;
 					num++;
+					check = true;
 				}
 				else
 					break;
 			}
-			list.add(num);
+			if(check)
+				list.add(num);
 		}
 		
 		answer = new int[list.size()];
