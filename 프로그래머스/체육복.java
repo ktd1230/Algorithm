@@ -21,7 +21,16 @@ public class 체육복 {
 		Collections.sort(list);
 		for (int i = 0; i < reserve.length; i++) {
 			for (int j = 0; j < list.size(); j++) {
-				if(reserve[i] - 1 == list.get(j) || reserve[i] + 1 == list.get(j)) {
+				if(reserve[i] == list.get(j)) {
+					list.remove(j);
+					reserve[i] = -1;
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < reserve.length; i++) {
+			for (int j = 0; j < list.size(); j++) {
+				if(reserve[i] != -1 && (reserve[i] - 1 == list.get(j) || reserve[i] + 1 == list.get(j))) {
 					list.remove(j);
 					break;
 				}
