@@ -17,27 +17,17 @@ public class 가장_큰_수 {
 			int_String[i] = Integer.toString(numbers[i]);
 		}
 		Arrays.sort(int_String, new Comparator<String>() {
-			@Override
 			public int compare(String o1, String o2) {
-				// TODO Auto-generated method stub
-
-				if(o2.length() != o1.length()) {
-					int min = Math.min(o2.length(), o1.length());
-					for (int i = 0; i < min; i++) {
-						if(o2.charAt(i) > o1.charAt(i))
-							return -1;
-						else if(o2.charAt(i) < o1.charAt(i))
-							return 1;
-					}
-					return o2.length() - o1.length();
-				}
-				return o2.compareTo(o1);
+				return (o2 + o1).compareTo(o1 + o2);
 			}
 		});
 		for (int i = 0; i < int_String.length; i++) {
-			answer += int_String[i];
+			if(answer.equals("0"))
+				answer = int_String[i];
+			else
+				answer += int_String[i];
 		}
-		System.out.println("3".compareTo("30"));
+		
 		return answer;
 	}
 }
