@@ -14,7 +14,7 @@ public class H_index {
 		Arrays.sort(citations);
 		for (int i = citations.length - 1; i >= 0; i--) {
 			if(citations[i] <= citations.length - 1 - i) {
-				answer = citations[i];
+				answer = citations.length - 1 - i;
                 break;
             }
 		}
