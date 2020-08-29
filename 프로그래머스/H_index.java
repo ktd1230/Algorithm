@@ -13,14 +13,12 @@ public class H_index {
 		int answer = 0;
 		Arrays.sort(citations);
 		for (int i = citations.length - 1; i >= 0; i--) {
-			System.out.println(citations.length - i);
 			if(citations[i] <= citations.length - 1 - i) {
 				answer = citations.length - 1 - i;
                 break;
             }
 		}
-		if(answer == 0)
-            answer = citations[0];
+		answer = answer == 0 ? Math.min(citations[0], citations.length) : answer;
 		return answer;
 	}
 	
