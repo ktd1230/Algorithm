@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.TreeSet;
 
 public class N과_M_9 {
 	
@@ -21,22 +24,18 @@ public class N과_M_9 {
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		Set<String> set = new HashSet<>();
-		comb(arr, 0, new int[M], 0, new boolean[N], set);
+		Arrays.sort(arr);
+		Set<String> set = new LinkedHashSet<>();
+		comb(arr, new int[M], 0, new boolean[N], set);
 		Iterator<String> iter = set.iterator();
-		String[] res = new String[set.size()];
-		
+		int[][] res = new int[set.size()][M];
 		for (int i = 0; i < res.length; i++) {
-			res[i] = iter.next();
+			System.out.println(iter.next());
 		}
 		
-		Arrays.sort(res);
-		for (int i = 0; i < res.length; i++) {
-			System.out.println(res[i]);
-		}
 	}
 	
-	public static void comb(int[] arr, int idx, int[] sel, int r, boolean[] used, Set<String> set) {
+	public static void comb(int[] arr, int[] sel, int r, boolean[] used, Set<String> set) {
 		if(r == sel.length) {
 			String s = "";
 			for (int i = 0; i < sel.length; i++) {
@@ -51,7 +50,7 @@ public class N과_M_9 {
 				continue;
 			used[i] = true;
 			sel[r] = arr[i];
-			comb(arr, idx + 1, sel, r + 1, used, set);
+			comb(arr, sel, r + 1, used, set);
 			used[i] = false;
 		}
 	}
